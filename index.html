@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //This function will return true if you won, and false if you lose.  A tie returns nothing.
+      function playRound(playerSelection, computerSelection) {
+        //Player chooses rock
+        if (playerSelection === "rock") {
+          if (computerSelection === "rock") {
+            console.log("It's a tie");
+            return;
+          } 
+          else if (computerSelection === "paper") {
+            console.log("you lose");
+            return false;
+          } 
+          else console.log("You win."); return true;
+        } 
+        //Player chooses scissors
+        else if (playerSelection === "scissors") {
+          if (computerSelection === "scissors") {
+            console.log("It's a tie");
+            return;
+          } 
+          else if (computerSelection === "rock") {
+            console.log("you lose");
+            return false;
+          } 
+          else console.log("You win."); return true;
+        } 
+        //Player chooses paper
+        else if (playerSelection === "paper") {
+          if (computerSelection === "paper") {
+            console.log("It's a tie");
+            return;
+          } 
+          else if (computerSelection === "scissors") {
+            console.log("you lose");
+            return false;
+          } 
+          else console.log("You win."); return true;
+        }
+      }
+
+      const choices = ["rock", "paper", "scissors"];
+
+      function computerPlay() {
+        return choices[Math.floor(Math.random() * 3)];
+      }
+
+      function game() {
+        let player_score = 0;
+        let cpu_score = 0;
+        let playerSelection;
+        let computerSelection;
+        const rounds = 5;
+        for (let i = 0; i < 5; i++){
+          playerSelection = prompt("Choose rock, paper, scissors: ");
+          computerSelection = computerPlay();
+          let result = playRound(playerSelection, computerSelection);
+          if (result) {
+            player_score+=1;
+          }
+          else if(result === false){
+            cpu_score +=1;
+          } 
+        }
+        player_score>cpu_score?console.log(`Player wins with score of ${player_score}`):console.log(`CPU wins with score of ${cpu_score}`);
+      }
+      game();
+    </script>
+  </body>
+</html>
